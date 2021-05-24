@@ -30,7 +30,7 @@ public class Posts {
 //    relations:
 
     @ManyToOne
-    private Users user;
+    private Users users;
 
     public Posts() {
     }
@@ -88,11 +88,11 @@ public class Posts {
         this.createdAt = createdAt;
     }
 
-    public Users getUser() {
-        return user;
+    public Users getUsers() {
+        return users;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setUsers(Users users) {
+        this.users = users;
     }
 }

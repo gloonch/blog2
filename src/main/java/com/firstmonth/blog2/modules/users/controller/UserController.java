@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/users")
 public class UserController {
 
@@ -27,6 +28,7 @@ public class UserController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public Users registerUser(Users users) {
+        System.out.println(users.getEmail() + " . " + users.getName());
         return usersService.register(users);
     }
 
