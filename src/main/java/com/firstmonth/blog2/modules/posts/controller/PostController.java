@@ -6,11 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/posts")
 public class PostController {
 
@@ -22,12 +23,14 @@ public class PostController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public List<Posts> getAllPosts() {
+    public @ResponseBody
+    List<Posts> getAllPosts() {
         return postsService.findAll();
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Posts registerPost(Posts posts) {
+    public @ResponseBody
+    Posts registerPost(Posts posts) {
         return postsService.register(posts);
     }
 }
