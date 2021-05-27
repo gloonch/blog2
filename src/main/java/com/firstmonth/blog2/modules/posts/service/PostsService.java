@@ -27,7 +27,6 @@ public class PostsService {
 //        getting image name
         String path = ResourceUtils.getFile("classpath:static/images/").getPath();
         byte[] bytes = posts.getFile().getBytes();
-        System.out.println(posts.getFile().getOriginalFilename());
 //        write: saving this file in the particular given path
 //        file separator: picks a compatible system separator depend on your OS
         Files.write(Paths.get(path + File.separator + posts.getFile().getOriginalFilename()), bytes);

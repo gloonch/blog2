@@ -22,7 +22,7 @@ public class PostController {
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public @ResponseBody
-    Posts registerPostimg(@ModelAttribute Posts posts) throws IOException {
+    Posts registerPosting(@ModelAttribute Posts posts) throws IOException {
         return postsService.register(posts);
     }
 

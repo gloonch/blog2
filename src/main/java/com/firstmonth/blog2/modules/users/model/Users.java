@@ -1,8 +1,12 @@
 package com.firstmonth.blog2.modules.users.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.firstmonth.blog2.modules.posts.model.Posts;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -24,13 +28,20 @@ public class Users implements Serializable {
     private String password;
     private String cover;
 
+    @Transient
+    @JsonIgnore
+    private MultipartFile file;
+
     @Column(name = "updated_at")
+    @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     //    relations:
+
     @OneToMany(mappedBy = "users")
     private List<Posts> posts;
 
@@ -83,6 +94,14 @@ public class Users implements Serializable {
 
     public void setCover(String cover) {
         this.cover = cover;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 
     public LocalDateTime getUpdatedAt() {
