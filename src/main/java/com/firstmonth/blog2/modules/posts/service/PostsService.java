@@ -37,4 +37,8 @@ public class PostsService {
     public List<Posts> findAll() {
         return postsRepository.findAll();
     }
+
+    public List<Posts> findBySearch(Posts posts) {
+        return postsRepository.findByTitleContaining(posts.getTitle());
+    }
 }

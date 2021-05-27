@@ -20,6 +20,12 @@ public class PostController {
         this.postsService = postsService;
     }
 
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Posts> search(@ModelAttribute Posts posts) {
+        return postsService.findBySearch(posts);
+    }
+
     @RequestMapping(value = "", method = RequestMethod.POST)
     public @ResponseBody
     Posts registerPosting(@ModelAttribute Posts posts) throws IOException {
