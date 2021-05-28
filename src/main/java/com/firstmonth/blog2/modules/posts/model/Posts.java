@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "posts_tbl")
@@ -41,6 +42,10 @@ public class Posts {
 
     @ManyToOne
     private Users users;
+
+    @ManyToMany
+    @JoinTable(name = "post_category")
+    private List<Category> categories;
 
     public Posts() {
     }
@@ -112,5 +117,13 @@ public class Posts {
 
     public void setUsers(Users users) {
         this.users = users;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }
