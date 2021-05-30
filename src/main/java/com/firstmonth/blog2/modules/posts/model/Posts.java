@@ -2,12 +2,14 @@ package com.firstmonth.blog2.modules.posts.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.firstmonth.blog2.modules.users.model.Users;
+<<<<<<< HEAD
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.web.multipart.MultipartFile;
+=======
+>>>>>>> master
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -25,10 +27,6 @@ public class Posts {
     private String title;
     private String body;
     private String cover;
-
-    @Transient
-    @JsonIgnore
-    private MultipartFile file;
 
     @Column(name = "updated_at")
     @UpdateTimestamp
@@ -85,14 +83,6 @@ public class Posts {
 
     public void setCover(String cover) {
         this.cover = cover;
-    }
-
-    public MultipartFile getFile() {
-        return file;
-    }
-
-    public void setFile(MultipartFile file) {
-        this.file = file;
     }
 
     public LocalDateTime getUpdatedAt() {
